@@ -45,7 +45,7 @@ export default function ProductCard({ title, author, price, image }: CardProps) 
       </div>
 
       {/* Modal */}
-      {showModal && (
+      {/* {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
           <div className="bg-white p-4 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-auto">
             <img src={modalImage} alt="Zoomed" className="w-full h-auto" />
@@ -57,7 +57,7 @@ export default function ProductCard({ title, author, price, image }: CardProps) 
             </button>
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 }
