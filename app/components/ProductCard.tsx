@@ -9,7 +9,7 @@ type CardProps = {
   image: string;
 };
 
-export default function Card({ title, author, price, image }: CardProps) {
+export default function ProductCard({ title, author, price, image }: CardProps) {
   const [showModal, setShowModal] = useState(false);
   const [modalImage, setModalImage] = useState("");
 
