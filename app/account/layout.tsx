@@ -1,11 +1,15 @@
+'use client';
+
 import Sidebar from '../components/AccountSidebar/Sidebar';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 export default function AccountLayout({ children }: { children: React.ReactNode }) {
-  // Define handleLogout function (dummy example)
+  const router = useRouter();
+
   const handleLogout = () => {
-    // Your logout logic here
-    console.log("User logged out");
+    localStorage.removeItem('token'); // example
+    router.push('/login');
   };
 
   return (

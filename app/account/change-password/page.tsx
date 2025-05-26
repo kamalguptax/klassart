@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Eye, EyeOff } from 'lucide-react'; // Optional: lucide icons
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function ChangePasswordForm() {
   const [showPassword, setShowPassword] = useState({
@@ -10,13 +10,73 @@ export default function ChangePasswordForm() {
     confirm: false,
   });
 
+  const [formData, setFormData] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: '',
+  });
+
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+  const [loading, setLoading] = useState(false);
+
   const toggleVisibility = (field: keyof typeof showPassword) => {
     setShowPassword(prev => ({ ...prev, [field]: !prev[field] }));
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setSuccess('');
+
+    // Simple validation
+    if (formData.newPassword !== formData.confirmPassword) {
+      setError('New password and confirm password do not match.');
+      return;
+    }
+
+    if (!formData.currentPassword || !formData.newPassword) {
+      setError('Please fill all the fields.');
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      // API call example - change this according to your backend
+      const res = await fetch('/api/change-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          currentPassword: formData.currentPassword,
+          newPassword: formData.newPassword,
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        setError(data.message || 'Something went wrong.');
+      } else {
+        setSuccess('Password changed successfully!');
+        setFormData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+      }
+    } catch (err) {
+      setError('Network error. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="max-w-md mx-auto mt-10 p-8 bg-white rounded-2xl shadow-lg">
+    <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-10 p-8 bg-white rounded-2xl shadow-lg">
       <h2 className="text-2xl font-bold text-center mb-6">Change Password</h2>
+
+      {error && <p className="mb-4 text-red-600">{error}</p>}
+      {success && <p className="mb-4 text-green-600">{success}</p>}
 
       {/* Current Password */}
       <div className="mb-4">
@@ -24,6 +84,9 @@ export default function ChangePasswordForm() {
         <div className="relative">
           <input
             type={showPassword.current ? 'text' : 'password'}
+            name="currentPassword"
+            value={formData.currentPassword}
+            onChange={handleChange}
             placeholder="Enter current password"
             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
@@ -42,6 +105,9 @@ export default function ChangePasswordForm() {
         <div className="relative">
           <input
             type={showPassword.new ? 'text' : 'password'}
+            name="newPassword"
+            value={formData.newPassword}
+            onChange={handleChange}
             placeholder="Enter new password"
             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
@@ -60,7 +126,10 @@ export default function ChangePasswordForm() {
         <div className="relative">
           <input
             type={showPassword.confirm ? 'text' : 'password'}
-            placeholder="Enter Re-enter new Password"
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            placeholder="Re-enter new password"
             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
           <span
@@ -73,9 +142,15 @@ export default function ChangePasswordForm() {
       </div>
 
       {/* Button */}
-      <button className="w-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-semibold py-2 rounded-md hover:opacity-90 transition">
-        Change Password
+      <button
+        type="submit"
+        disabled={loading}
+        className={`w-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-semibold py-2 rounded-md hover:opacity-90 transition ${
+          loading ? 'opacity-50 cursor-not-allowed' : ''
+        }`}
+      >
+        {loading ? 'Changing...' : 'Change Password'}
       </button>
-    </div>
+    </form>
   );
 }
