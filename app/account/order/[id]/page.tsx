@@ -1,5 +1,3 @@
-// app/account/order/[id]/page.tsx
-
 import { Order } from "@/app/account/order/OrderCard";
 
 type PageProps = {
@@ -29,9 +27,8 @@ const dummyOrders: Order[] = [
   },
 ];
 
-export default async function OrderDetailPage(props: PageProps) {
-  // ✅ Await the whole params object (this is mandatory for Next.js App Router)
-  const { id } = await Promise.resolve(props.params); // ✅ Fix applied
+export default async function OrderDetailPage({ params }: PageProps) {
+  const id = params.id;
 
   const order = dummyOrders.find((o) => o.id === id);
 
