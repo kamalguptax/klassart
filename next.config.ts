@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
   experimental: {
-    allowedDevOrigins: ['http://192.168.31.127:3000'], // ya jo bhi IP/port se access kar rahe ho
+    allowedDevOrigins: [], // ya jo bhi IP/port se access kar rahe ho
   },
 }
 
