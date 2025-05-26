@@ -1,9 +1,7 @@
 import { Order } from "@/app/account/order/OrderCard";
 
 type PageProps = {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>;  // params is awaited because it may be a Promise
 };
 
 const dummyOrders: Order[] = [
@@ -27,7 +25,8 @@ const dummyOrders: Order[] = [
   },
 ];
 
-export default async function OrderDetailPage({ params }: PageProps) {
+export default async function OrderDetailPage(props: PageProps) {
+  const params = await props.params;  // Await here
   const id = params.id;
 
   const order = dummyOrders.find((o) => o.id === id);
