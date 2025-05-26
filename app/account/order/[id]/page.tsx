@@ -2,7 +2,7 @@
 
 import { Order } from "@/app/account/order/OrderCard";
 
-type Params = {
+type PageProps = {
   params: {
     id: string;
   };
@@ -30,7 +30,7 @@ const dummyOrders: Order[] = [
   },
 ];
 
-export default function OrderDetailPage({ params }: Params) {
+export default function OrderDetailPage({ params }: PageProps) {
   const order = dummyOrders.find((o) => o.id === params.id);
 
   if (!order) return <p className="p-10 text-red-500">Order not found</p>;
