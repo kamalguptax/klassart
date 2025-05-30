@@ -37,9 +37,11 @@ export default function OrderSummary() {
     }
   }, [showModal]);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    const handleChange = (
+      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    ) => {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
 
   const handleSaveAddress = () => {
     const { name, phone, address, city, state, pin } = formData;
