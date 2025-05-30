@@ -1,105 +1,107 @@
-// components/FilterSidebar.js
+import { useState } from "react";
+import { ChevronDown, ChevronUp, SlidersHorizontal } from "lucide-react";
 
-const value = "true";
+const FilterSection = ({ title, children }) => {
+  const [open, setOpen] = useState(true);
+
+  return (
+    <div className="border-b border-gray-300 pb-4 mb-4">
+      <div
+        className="flex justify-between items-center cursor-pointer"
+        onClick={() => setOpen(!open)}
+      >
+        <h3 className="text-sm font-semibold text-black">{title}</h3>
+        {open ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+      </div>
+      {open && <div className="mt-3 space-y-2">{children}</div>}
+    </div>
+  );
+};
+
+const Checkbox = ({ label, checked }) => (
+  <label className="flex items-center gap-2 cursor-pointer text-sm text-gray-700">
+    <input
+      type="checkbox"
+      defaultChecked={checked}
+      className="w-4 h-4 accent-indigo-600 border-gray-300 rounded"
+    />
+    <span>{label}</span>
+    <span className="ml-auto text-xs text-gray-400">{checked ? "289" : "548"}</span>
+  </label>
+);
+
+const Radio = ({ label, name, checked }) => (
+  <label className="flex items-center gap-2 cursor-pointer text-sm text-gray-700">
+    <input
+      type="radio"
+      name={name}
+      defaultChecked={checked}
+      className="w-4 h-4 accent-indigo-600 border-gray-300"
+    />
+    <span>{label}</span>
+    <span className="ml-auto text-xs text-gray-400">{checked ? "289" : "548"}</span>
+  </label>
+);
 
 export default function FilterSidebar() {
-    
   return (
-    <div className="w-72 p-5 bg-white">
-      <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-        Filters
-      </h2>
+    <aside className="w-full max-w-xs px-5 py-6">
+      {/* Filters Header */}
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-2">
+          <SlidersHorizontal size={18} />
+          <h2 className="font-semibold text-lg">Filters</h2>
+        </div>
+        <ChevronUp size={18} className="text-gray-600" />
+      </div>
 
       {/* Orientation */}
-      <div className="mb-6">
-        <h3 className="text-sm font-semibold text-blue-600 mb-2">Orientation</h3>
-        {[
-          ['Square', 289, true],
-          ['Widescreen', 548],
-          ['Portrait', 548],
-          ['Traditional', 548],
-          ['Vertical', 548],
-          ['Horizontal', 548],
-          ['Social post', 548],
-          ['Standard', 548],
-          ['Classic', 548],
-        ].map(([label, count, checked], i) => (
-          <label key={i} className={`flex items-center ${checked ? 'text-black font-semibold' : 'text-gray-400'} mb-1`}>
-            <input type="checkbox" defaultChecked={value === "true"} className="form-checkbox text-blue-600" />
-            <span className="ml-2 text-sm">{label}</span>
-            <span className="ml-auto text-sm">{count}</span>
-          </label>
-        ))}
-      </div>
+      <FilterSection title={<span className="text-indigo-600 font-semibold">Orientation</span>}>
+        <Checkbox label="Square" checked />
+        <Checkbox label="Widescreen" />
+        <Checkbox label="Portrait" />
+        <Checkbox label="Traditional" />
+        <Checkbox label="Vertical" />
+        <Checkbox label="Horizontal" />
+        <Checkbox label="Social post" />
+        <Checkbox label="Standard" />
+        <Checkbox label="Classic" />
+      </FilterSection>
 
       {/* Style / Categories */}
-      <div className="mb-6">
-        <h3 className="text-sm font-semibold text-blue-600 mb-2">Style / Categories</h3>
-        {[
-          ['Artistic Styles', 289, true],
-          ['Modern Illustration', 548],
-          ['Cartoon Styles', 548],
-          ['Photorealistic Styles', 548],
-          ['Cultural Styles', 548],
-          ['Experimental Styles', 548],
-        ].map(([label, count, selected], i) => (
-          <label key={i} className={`flex items-center ${selected ? 'text-black font-semibold' : 'text-gray-400'} mb-1`}>
-            <input type="radio" name="style" defaultChecked={value === "true"} className="form-radio text-blue-600" />
-            <span className="ml-2 text-sm">{label}</span>
-            <span className="ml-auto text-sm">{count}</span>
-          </label>
-        ))}
-      </div>
+      <FilterSection title={<span className="text-indigo-600 font-semibold">Style / Categories</span>}>
+        <Radio label="Artistic Styles" name="style" checked />
+        <Radio label="Modern Illustration" name="style" />
+        <Radio label="Cartoon Styles" name="style" />
+        <Radio label="Photorealistic Styles" name="style" />
+        <Radio label="Cultural Styles" name="style" />
+        <Radio label="Experimental Styles" name="style" />
+      </FilterSection>
 
       {/* Subcategories */}
-      <div className="mb-6">
-        <h3 className="text-sm font-semibold text-blue-600 mb-2">Subcategories</h3>
-        <div className="mb-2 text-black font-semibold">Van Gogh</div>
-        <label className="flex items-center text-black font-semibold mb-1">
-          <input type="checkbox" defaultChecked className="form-checkbox text-blue-600" />
-          <span className="ml-2 text-sm">Starry Night</span>
-          <span className="ml-auto text-sm">289</span>
-        </label>
-        <label className="flex items-center text-gray-400 mb-1">
-          <input type="checkbox" className="form-checkbox" />
-          <span className="ml-2 text-sm">Sunflowers</span>
-          <span className="ml-auto text-sm">548</span>
-        </label>
-
-        {/* Add more artist options */}
-        {['Picasso', 'Monet', 'Da Vinci', 'Rembrandt'].map((artist, i) => (
-          <label key={i} className="flex items-center text-gray-400 mb-1">
-            <input type="radio" name="artist" className="form-radio" />
-            <span className="ml-2 text-sm">{artist}</span>
-          </label>
-        ))}
-      </div>
+      <FilterSection title={<span className="text-indigo-600 font-semibold">Subcategories</span>}>
+        <Radio label="Van Gogh" name="artist" checked />
+        <Checkbox label="Starry Night" checked />
+        <Checkbox label="Sunflowers" />
+        <Radio label="Picasso" name="artist" />
+        <Radio label="Monet" name="artist" />
+        <Radio label="Da Vinci" name="artist" />
+        <Radio label="Rembrandt" name="artist" />
+      </FilterSection>
 
       {/* Price */}
-      <div className="mb-6">
-        <h3 className="text-sm font-semibold text-blue-600 mb-2">Price</h3>
-        {[
-          ['Up To ₹500', 289, true],
-          ['₹501 - ₹1,999', 548],
-          ['₹2,000 - ₹4,999', 548],
-          ['Above ₹5,000', 548],
-        ].map(([label, count, checked], i) => (
-          <label key={i} className={`flex items-center ${checked ? 'text-black font-semibold' : 'text-gray-400'} mb-1`}>
-            <input type="checkbox" defaultChecked={value === "true"} className="form-checkbox text-blue-600" />
-            <span className="ml-2 text-sm">{label}</span>
-            <span className="ml-auto text-sm">{count}</span>
-          </label>
-        ))}
-      </div>
+      <FilterSection title={<span className="text-indigo-600 font-semibold">Price</span>}>
+        <Checkbox label="Up To ₹500" checked />
+        <Checkbox label="₹ 501 - ₹1,999" />
+        <Checkbox label="₹2,000 - ₹4,999" />
+        <Checkbox label="Above ₹5,000" />
+      </FilterSection>
 
       {/* Buttons */}
-      <div className="flex gap-3">
-        <button className="flex-1 py-2 border rounded-lg text-gray-400">Clear</button>
-        <button className="flex-1 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg">Apply</button>
+      <div className="flex gap-3 mt-6">
+        <button className="flex-1 bg-gray-100 text-gray-600 py-2 rounded text-sm font-medium">Clear</button>
+        <button className="flex-1 bg-gradient-to-r from-indigo-500 to-blue-500 text-white py-2 rounded text-sm font-medium">Apply</button>
       </div>
-    </div>
+    </aside>
   );
 }

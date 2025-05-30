@@ -1,6 +1,6 @@
 export default function MyPlan() {
     return (
-      <section className="bg-gray-50 py-12 px-4 md:px-10 text-gray-900 h-screen">
+      <section className="py-12 px-4 md:px-10 text-gray-900">
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold mb-2">Experience AI Without Limits</h2>
         <p className="text-gray-600 max-w-2xl mx-auto">

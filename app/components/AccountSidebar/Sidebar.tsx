@@ -27,7 +27,7 @@ const Sidebar: React.FC<SidebarProps> = ({ handleLogout }) => {
   ];
 
   return (
-    <div className="p-4 w-[250px] bg-white shadow-lg">
+    <div className="sticky top-20 p-8 w-[340px] min-h-[calc(100vh-64px)] bg-white shadow-lg">
       {menuItems.map(({ label, href, icon, onClick }, index) => {
         const isActive = pathname === href;
         const key = href || `${label}-${index}`;
@@ -37,7 +37,7 @@ const Sidebar: React.FC<SidebarProps> = ({ handleLogout }) => {
             <div
               key={key}
               onClick={onClick}
-              className="flex items-center gap-3 mb-5 px-4 py-4 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 cursor-pointer transition-all"
+              className="flex items-center gap-3 mb-5 px-4 py-4 rounded-lg text-[18px] font-medium text-gray-700 hover:bg-gray-100 cursor-pointer transition-all"
             >
               <Image src={icon} alt={`${label} icon`} width={20} height={20} />
               <span>{label}</span>
@@ -50,7 +50,7 @@ const Sidebar: React.FC<SidebarProps> = ({ handleLogout }) => {
             <Link
               key={key}
               href={href}
-              className={`flex items-center gap-3 mb-5 px-4 py-4 rounded-lg text-sm font-medium transition-all ${
+              className={`flex items-center gap-3 mb-5 px-4 py-4 rounded-lg text-[18px] font-medium transition-all ${
                 isActive ? 'bg-custom-gradient text-white' : 'text-gray-700 hover:bg-gray-100'
               }`}
             >

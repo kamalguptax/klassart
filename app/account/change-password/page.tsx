@@ -72,85 +72,93 @@ export default function ChangePasswordForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-10 p-8 bg-white rounded-2xl shadow-lg">
-      <h2 className="text-2xl font-bold text-center mb-6">Change Password</h2>
+   <div
+  className="h-full flex items-center justify-center w-full"
+>
+  <form
+    onSubmit={handleSubmit}
+    className="w-[540px] mx-auto p-8 bg-white rounded-2xl shadow-xl border border-gray-200"
+  >
+    <h2 className="text-2xl font-bold text-center mb-6">Change Password</h2>
 
-      {error && <p className="mb-4 text-red-600">{error}</p>}
-      {success && <p className="mb-4 text-green-600">{success}</p>}
+    {error && <p className="mb-4 text-red-600">{error}</p>}
+    {success && <p className="mb-4 text-green-600">{success}</p>}
 
-      {/* Current Password */}
-      <div className="mb-4">
-        <label className="block text-gray-700 mb-1">Current Password</label>
-        <div className="relative">
-          <input
-            type={showPassword.current ? 'text' : 'password'}
-            name="currentPassword"
-            value={formData.currentPassword}
-            onChange={handleChange}
-            placeholder="Enter current password"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-          />
-          <span
-            className="absolute right-3 top-2.5 cursor-pointer text-gray-500"
-            onClick={() => toggleVisibility('current')}
-          >
-            {showPassword.current ? <EyeOff size={20} /> : <Eye size={20} />}
-          </span>
-        </div>
+    {/* Current Password */}
+    <div className="mb-4">
+      <label className="block text-gray-700 mb-1">Current Password</label>
+      <div className="relative">
+        <input
+          type={showPassword.current ? 'text' : 'password'}
+          name="currentPassword"
+          value={formData.currentPassword}
+          onChange={handleChange}
+          placeholder="Enter current password"
+          className="w-full px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+        />
+        <span
+          className="absolute right-3 top-2.5 cursor-pointer text-gray-500"
+          onClick={() => toggleVisibility('current')}
+        >
+          {showPassword.current ? <EyeOff size={20} /> : <Eye size={20} />}
+        </span>
       </div>
+    </div>
 
-      {/* New Password */}
-      <div className="mb-4">
-        <label className="block text-gray-700 mb-1">New Password</label>
-        <div className="relative">
-          <input
-            type={showPassword.new ? 'text' : 'password'}
-            name="newPassword"
-            value={formData.newPassword}
-            onChange={handleChange}
-            placeholder="Enter new password"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-          />
-          <span
-            className="absolute right-3 top-2.5 cursor-pointer text-gray-500"
-            onClick={() => toggleVisibility('new')}
-          >
-            {showPassword.new ? <EyeOff size={20} /> : <Eye size={20} />}
-          </span>
-        </div>
+    {/* New Password */}
+    <div className="mb-4">
+      <label className="block text-gray-700 mb-1">New Password</label>
+      <div className="relative">
+        <input
+          type={showPassword.new ? 'text' : 'password'}
+          name="newPassword"
+          value={formData.newPassword}
+          onChange={handleChange}
+          placeholder="Enter new password"
+          className="w-full px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+        />
+        <span
+          className="absolute right-3 top-2.5 cursor-pointer text-gray-500"
+          onClick={() => toggleVisibility('new')}
+        >
+          {showPassword.new ? <EyeOff size={20} /> : <Eye size={20} />}
+        </span>
       </div>
+    </div>
 
-      {/* Confirm New Password */}
-      <div className="mb-6">
-        <label className="block text-gray-700 mb-1">Re-Enter New Password</label>
-        <div className="relative">
-          <input
-            type={showPassword.confirm ? 'text' : 'password'}
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            placeholder="Re-enter new password"
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-          />
-          <span
-            className="absolute right-3 top-2.5 cursor-pointer text-gray-500"
-            onClick={() => toggleVisibility('confirm')}
-          >
-            {showPassword.confirm ? <EyeOff size={20} /> : <Eye size={20} />}
-          </span>
-        </div>
+    {/* Confirm New Password */}
+    <div className="mb-6">
+      <label className="block text-gray-700 mb-1">Re-Enter New Password</label>
+      <div className="relative">
+        <input
+          type={showPassword.confirm ? 'text' : 'password'}
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          placeholder="Re-enter new password"
+          className="w-full px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+        />
+        <span
+          className="absolute right-3 top-2.5 cursor-pointer text-gray-500"
+          onClick={() => toggleVisibility('confirm')}
+        >
+          {showPassword.confirm ? <EyeOff size={20} /> : <Eye size={20} />}
+        </span>
       </div>
+    </div>
 
-      {/* Button */}
-      <button
-        type="submit"
-        disabled={loading}
-        className={`w-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-semibold py-2 rounded-md hover:opacity-90 transition ${
-          loading ? 'opacity-50 cursor-not-allowed' : ''
-        }`}
-      >
-        {loading ? 'Changing...' : 'Change Password'}
-      </button>
-    </form>
+    {/* Submit Button */}
+    <button
+      type="submit"
+      disabled={loading}
+      className={`w-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white text-[18px] font-medium py-2 rounded-md hover:opacity-90 transition ${
+        loading ? 'opacity-50 cursor-not-allowed' : ''
+      }`}
+    >
+      {loading ? 'Changing...' : 'Change Password'}
+    </button>
+  </form>
+</div>
+
   );
 }

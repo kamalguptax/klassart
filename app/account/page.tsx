@@ -23,7 +23,7 @@ export default function MyProfile() {
 
   return (
     <div className="p-8 bg-white min-h-screen space-y-6">
-      <h1 className="text-[#333333] font-semibold text-[32px]">My Profile</h1>
+      <h1 className="ont-medium text-[#333333] text-[44px]">My Profile</h1>
 
       {/* Profile Card */}
       <div className="bg-white rounded-xl border border-[#E6E6E6] p-6 flex items-center justify-between">

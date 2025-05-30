@@ -117,10 +117,10 @@ const groupedNotifications = notifications.reduce((acc, item) => {
 
 export default function NotificationPage() {
   return (
-    <div className="min-h-screen bg-gray-50 px-4 py-8 md:px-10">
+    <div className="min-h-screen px-4 py-8 md:px-10">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Notification</h1>
-        <button className="flex items-center gap-1 px-4 py-2 border rounded-lg text-sm text-gray-700 bg-white shadow-sm hover:bg-gray-100">
+        <h1 className="ont-medium text-[#333333] text-[44px]">Notification</h1>
+        <button className="flex items-center gap-1 px-6 py-4 border rounded-lg text-[14px] border-gray-200 text-gray-700 bg-gray-100 hover:bg-gray-100">
           Short by <ChevronDown size={16} />
         </button>
       </div>
@@ -144,7 +144,7 @@ export default function NotificationPage() {
 
               {/* Text Content */}
               <div>
-                <h2 className="text-lg font-semibold text-gray-800">{item.title}</h2>
+                <h2 className="text-[20px] font-medium text-gray-800">{item.title}</h2>
                 <p className="text-gray-600 text-sm mt-1">{item.message}</p>
                 <p className="text-xs text-gray-400 mt-1">
                   {item.date} · {item.time}

@@ -5,7 +5,7 @@ export default function DynamicLayout({ children }: { children: ReactNode }) {
   return (
     <>
     <InnerHeader />
-    <main className="h-screen">{children}</main>
+    <main className="">{children}</main>
     </>
   );
 }

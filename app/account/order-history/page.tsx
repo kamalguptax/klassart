@@ -28,9 +28,9 @@ export default function Home() {
   ];
 
   return (
-    <main className="bg-gray-100 min-h-screen py-10 px-4">
+    <main className="min-h-screen py-10 px-8">
       <div className="">
-        <h1 className="text-3xl font-bold mb-2">My Order History</h1>
+        <h1 className="ont-medium text-[#333333] text-[44px] mb-2">My Order History</h1>
         <p className="text-sm text-gray-500 mb-6">March 2025</p>
         <div className="space-y-4">
           {orders.map((order, index) => (

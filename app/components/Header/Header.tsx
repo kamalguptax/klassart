@@ -13,36 +13,37 @@ export const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const offset = window.scrollY;
-      setScrolled(offset > 50);
+      setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close mobile menu when clicking a link (better UX)
+  const handleLinkClick = () => setMenuOpen(false);
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
           scrolled ? "bg-white shadow-md text-black" : "bg-transparent text-white"
-        } py-4`}
+        }`}
       >
-        <div className="max-w-screen-xl mx-auto">
+        <div className="container mx-auto px-4 py-4">
           <nav>
             <div className="flex justify-between items-center">
               {/* Brand */}
-              <Link href="/" className="text-3xl font-bold">
+              <Link href="/" className="text-3xl font-bold" onClick={handleLinkClick}>
                 KLASS ART
               </Link>
 
               {/* Desktop Nav */}
               <div className="hidden lg:flex items-center gap-12">
                 <div className="flex gap-8 font-medium">
-                  <Link href="/">Services</Link>
-                  <Link href="/">Products</Link>
-                  <Link href="/">Subscription</Link>
-                  <Link href="/">Dashboard</Link>
+                  <Link href="/" onClick={handleLinkClick}>Services</Link>
+                  <Link href="/" onClick={handleLinkClick}>Products</Link>
+                  <Link href="/" onClick={handleLinkClick}>Subscription</Link>
+                  <Link href="/" onClick={handleLinkClick}>Dashboard</Link>
                 </div>
                 <div className="flex gap-6 items-center">
                   <button
@@ -69,6 +70,7 @@ export const Header = () => {
               {/* Mobile Toggle */}
               <button
                 className="lg:hidden block"
+                aria-label={menuOpen ? "Close menu" : "Open menu"}
                 onClick={() => setMenuOpen(!menuOpen)}
               >
                 {menuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -78,15 +80,16 @@ export const Header = () => {
             {/* Mobile Menu */}
             {menuOpen && (
               <div className="absolute top-full left-0 w-full bg-white text-black p-6 lg:hidden flex flex-col gap-4 shadow-lg z-40">
-                <Link href="/">Services</Link>
-                <Link href="/">Products</Link>
-                <Link href="/">Subscription</Link>
-                <Link href="/">Dashboard</Link>
+                <Link href="/" onClick={handleLinkClick}>Services</Link>
+                <Link href="/" onClick={handleLinkClick}>Products</Link>
+                <Link href="/" onClick={handleLinkClick}>Subscription</Link>
+                <Link href="/" onClick={handleLinkClick}>Dashboard</Link>
                 <button
                   className="border-2 px-6 py-2 rounded-full hover:bg-gray-100"
                   onClick={() => {
                     setFormType("login");
                     setShowModal(true);
+                    setMenuOpen(false);
                   }}
                 >
                   Login
@@ -96,6 +99,7 @@ export const Header = () => {
                   onClick={() => {
                     setFormType("signup");
                     setShowModal(true);
+                    setMenuOpen(false);
                   }}
                 >
                   Sign Up

@@ -25,8 +25,8 @@ export default function DashboardHeader() {
   return (
     <>
       {/* Header Section */}
-      <div className="min-h-[200px] p-6">
-        <h1 className="font-bold text-[#333333] text-[44px] mb-2">Dashboard</h1>
+      <div className="min-h-[200px] p-8">
+        <h1 className="font-medium text-[#333333] text-[44px] mb-2">Dashboard</h1>
         <p className="text-[24px] font-semibold text-[rgba(123,74,231,1)] font-['Open_Sans'] mb-1">Welcome Back, Muneer Khan!</p>
         <p className="text-[14px] font-normal text-[#ADB8C9] font-['Open_Sans']">Here’s what happening with your business today</p>
 
@@ -67,7 +67,7 @@ export default function DashboardHeader() {
       </div>
 
       {/* Table Section */}
-      <div className='p-6 pt-0'>
+      <div className='p-8 pt-0'>
       <div className="bg-white p-4 rounded-xl border border-gray-200">
         {/* Tabs + Search + Filter */}
         <div className="flex flex-wrap items-center justify-between mb-4">

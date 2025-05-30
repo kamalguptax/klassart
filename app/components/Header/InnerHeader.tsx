@@ -132,7 +132,7 @@ const Header: React.FC = () => {
   }, []);
 
   return (
-    <header className="flex justify-between items-center px-6 py-4 bg-white border-b border-gray-300">
+    <header className="flex justify-between items-center px-20 py-4 bg-white border-b border-gray-300">
       
        <Link href="/" className="text-3xl font-bold">
         <img src="/assets/images/logo.svg" alt="Logo" />
@@ -159,17 +159,17 @@ const Header: React.FC = () => {
             {dropdownOpen && (
               <ul className="absolute z-50 mt-2 w-[260px] bg-white rounded-md shadow-lg">
                 <li>
-                  <Link href="/TextToImage" className="block px-4 py-2 hover:bg-gray-100">
+                  <Link href="/service/TextToImage" className="block px-4 py-2 hover:bg-gray-100">
                     Text to Image
                   </Link>
                 </li>
                 <li>
-                  <Link href="/ImageToImage" className="block px-4 py-2 hover:bg-gray-100">
+                  <Link href="/service/ImageToImage" className="block px-4 py-2 hover:bg-gray-100">
                     Image to Image
                   </Link>
                 </li>
                 <li>
-                  <Link href="/text-behind-image" className="block px-4 py-2 hover:bg-gray-100">
+                  <Link href="/service/TextBehindImage" className="block px-4 py-2 hover:bg-gray-100">
                     Text Behind Image
                   </Link>
                 </li>
@@ -178,7 +178,7 @@ const Header: React.FC = () => {
           </li>
           <li>
             <Link href="/products" className="text-gray-800 px-4 hover:text-indigo-600">
-              Products
+              Market Place
             </Link>
           </li>
           <li>

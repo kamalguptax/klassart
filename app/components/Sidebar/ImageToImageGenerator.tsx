@@ -32,7 +32,7 @@ const modernIllustrations = [
   { label: "Da Vinci", icon: "/assets/images/service/da-vinci.jpg" },
 ];
 
-export default function ImageGeneratorOption() {
+export default function ImageToImageGenerator() {
   const [isSizeOpen, setIsSizeOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
@@ -64,9 +64,17 @@ export default function ImageGeneratorOption() {
       <div className="w-full">
         <h2 className="text-xl font-normal mb-4">Generate an Image</h2>
 
+         <label className="block cursor-pointer w-full max-w-md border border-blue-500 rounded-lg mb-4 bg-gray-100 text-center p-8 hover:bg-gray-200 transition-colors">
+            <div className="flex flex-col items-center justify-center gap-2">
+                <img className="w-[32px]" src="/assets/images/icon/upload-images.svg" alt="upload file" />
+                <span className="text-gray-800 text-base font-medium">Upload image</span>
+            </div>
+            <input type="file" accept="image/*" className="hidden" />
+        </label>
+
         <textarea
           className="w-full h-24 p-3 border border-gray-400 rounded-md"
-          placeholder="Enter your prompt..."
+          placeholder="A magical forest with glowing trees at night |"
         />
 
         <div className="flex items-center justify-between py-2 w-full max-w-md bg-white rounded-lg">

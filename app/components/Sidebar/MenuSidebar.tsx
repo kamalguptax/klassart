@@ -4,9 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation"; // To detect active page
 
 const options = [
-  { label: "Image", icon: "/assets/images/icon/text-to-image01.svg", activeIcon: "/assets/images/icon/text-to-image-active01.svg", href: "/TextToImage" },
-  { label: "Reimagine", icon: "/assets/images/icon/text-to-image02.svg", activeIcon: "/assets/images/icon/text-to-image-active02.svg", href: "/ImageToImage" },
-  { label: "Text", icon: "/assets/images/icon/text-to-image03.svg", activeIcon: "/assets/images/icon/text-to-image-active03.svg", href: "/text" },
+  { label: "Image", icon: "/assets/images/icon/text-to-image01.svg", activeIcon: "/assets/images/icon/text-to-image-active01.svg", href: "/service/TextToImage" },
+  { label: "Reimagine", icon: "/assets/images/icon/text-to-image02.svg", activeIcon: "/assets/images/icon/text-to-image-active02.svg", href: "/service/ImageToImage" },
+  { label: "Text", icon: "/assets/images/icon/text-to-image03.svg", activeIcon: "/assets/images/icon/text-to-image-active03.svg", href: "/service/TextBehindImage" },
 ];
 
 export default function MenuSidebar() {
