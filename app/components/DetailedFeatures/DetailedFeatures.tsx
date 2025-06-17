@@ -9,41 +9,36 @@ export const DetailedFeatures = () => {
     threshold: 0.2, // 20% of the element must be visible before triggering
   });
   return (
-    <section className="bg-[url('/assets/images/mobilebg.png')] bg-no-repeat bg-cover bg-center">
+    <section className="bg-[url('/assets/images/section-bg02.jpg')] bg-no-repeat bg-cover bg-center">
       <div
         ref={ref}
-        className=" px-6 md:px-16 lg:px-36 py-20"
+        className="px-6 md:px-16 lg:px-36 py-20"
       >
-        <div className="  px-6 md:px-16 lg:px-36 ">
+        <div className="">
           <motion.p
             initial={{ opacity: 0, scale: 0.8 }} // Start small and transparent
             animate={inView ? { opacity: 1, scale: 1 } : {}} // Scale up when in view
             transition={{ duration: 0.6, ease: "easeOut" }} // Smooth transition
-            className="text-center font-openSans text-3xl sm:text-4xl md:text-[66px] font-bold pt- pb-20"
+            className="text-center font-openSans text-[28px] sm:text-[36px] md:text-[48px] lg:text-[66px] font-bold pt-6 pb-20"
           >
-            Transform Ideas{" "}
-            <span className="bg-gradient-to-r from-[#C289FF] to-[#5555FF] bg-clip-text text-transparent">
-              {" "}
-              into Reality
-            </span>
+            Products that you can get products printed (Klass art)
           </motion.p>
           <div>
             {[
               {
-                title: { first: "AI-Powered", second: "Creativity" },
-                desc: "Generate any picture you can imagine with any face.",
+                title: { first: "Give prompt and", second: "make it perfect" },
+                desc: "Enter a text prompt and let AI transform your imagination into stunning visuals. Experience effortless creativity as AI generates breathtaking images, bringing your ideas to life with precision and artistic brilliance.",
                 img: "/assets/images/product01.png",
-                button: "Generate Now",
               },
               {
-                title: { first: "Creative", second: "Upscale" },
-                desc: "Enhance your images with any background.",
+                title: { first: "Generate your", second: "image" },
+                desc: "Upload an image, and let AI create unique, visually stunning variations with intelligent enhancements. Experience effortless creativity as AI reimagines your visuals with artistic precision and innovative transformations.",
                 img: "/assets/images/product02.png",
                 button: "Enhance Image",
               },
               {
-                title: { first: "Text Behind", second: "the Image" },
-                desc: "Elevate visuals with seamless background removal for a professional touch. please discribe",
+                title: { first: "Get it printed or sell on", second: "Marketplace" },
+                desc: "Upload an image, and let our AI precisely extract and convert text into an editable digital format, ensuring accuracy, efficiency, and seamless accessibility for your documents and content.",
                 img: "/assets/images/product03.png",
                 button: "Extract Text",
               },
@@ -55,7 +50,6 @@ export const DetailedFeatures = () => {
                   img={item.img}
                   title={item.title}
                   desc={item.desc}
-                  button={item.button}
                 />
               );
             })}

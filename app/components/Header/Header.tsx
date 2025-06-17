@@ -41,7 +41,7 @@ export const Header = () => {
               <div className="hidden lg:flex items-center gap-12">
                 <div className="flex gap-8 font-medium">
                   <Link href="/" onClick={handleLinkClick}>Services</Link>
-                  <Link href="/" onClick={handleLinkClick}>Products</Link>
+                  <Link href="/" onClick={handleLinkClick}>Marketplace</Link>
                   <Link href="/" onClick={handleLinkClick}>Subscription</Link>
                   <Link href="/" onClick={handleLinkClick}>Dashboard</Link>
                 </div>
@@ -81,7 +81,7 @@ export const Header = () => {
             {menuOpen && (
               <div className="absolute top-full left-0 w-full bg-white text-black p-6 lg:hidden flex flex-col gap-4 shadow-lg z-40">
                 <Link href="/" onClick={handleLinkClick}>Services</Link>
-                <Link href="/" onClick={handleLinkClick}>Products</Link>
+                <Link href="/" onClick={handleLinkClick}>Marketplace</Link>
                 <Link href="/" onClick={handleLinkClick}>Subscription</Link>
                 <Link href="/" onClick={handleLinkClick}>Dashboard</Link>
                 <button

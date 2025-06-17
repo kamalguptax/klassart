@@ -8,11 +8,11 @@ interface FeatureCardProps {
 
 export const FeatureCard: React.FC<FeatureCardProps> = ({ image, title, des }) => {
   return (
-    <div className="rounded-2xl bg-white shadow-lg hover:shadow-2xl cursor-pointer lg:h-[480px] md:h-[450px] overflow-clip">
+    <div className="">
       <img src={image} alt={title} className="w-full object-cover" />
 
       {/* Text Content */}
-      <div className="mt-4 px-9 pt-4 flex flex-col justify-center">
+      <div className="mt-4 px-9 pt-4 pb-4 flex flex-col justify-center">
         <p className="font-dmSans text-3xl font-[450] text-[#1A1A1A]">
           {title}
         </p>

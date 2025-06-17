@@ -29,7 +29,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onForgot, onSwitch, onClose }) =>
     if (email === "test@example.com" && password === "password123") {
       localStorage.setItem("isLoggedIn", "true"); // ✅ store login state
       onClose(); // Close the modal after login
-      router.push("/TextToImage"); // Redirect to the desired page
+      router.push("/service/TextToImage"); // Redirect to the desired page
     } else {
       setError("Invalid email or password.");
     }

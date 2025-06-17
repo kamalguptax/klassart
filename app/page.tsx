@@ -8,6 +8,7 @@ import { Faq } from "../app/components/Faq/Faq";
 import { PricingSection } from "../app/components/PricingSection/PricingSection";
 import { Thumbnails } from "./components/Thumnails/Thumnails";
 import { UltimateFeature } from "../app/components/UltimateFeature/UltimateFeature";
+import ProductGrid from "./components/ProductsPrinted/ProductsPrinted";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <UltimateFeature />
       <DetailedFeatures />
       <Thumbnails />
+      <ProductGrid />
       <PricingSection />
       <Faq />
     </div>

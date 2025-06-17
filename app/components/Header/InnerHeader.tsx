@@ -178,7 +178,7 @@ const Header: React.FC = () => {
           </li>
           <li>
             <Link href="/products" className="text-gray-800 px-4 hover:text-indigo-600">
-              Market Place
+              Marketplace
             </Link>
           </li>
           <li>

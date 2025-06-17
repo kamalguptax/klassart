@@ -49,7 +49,7 @@ const toggleFAQ = (index: number) => {
           <p className="text-2xl font-[500] text-[#5555FF] font-inter">
             ASK QUESTION
           </p>
-          <h2 className="font-dmSans md:text-[52px] sm:text-4xl font-[500]  mb-10">
+          <h2 className="font-dmSans font-semibold text-[28px] sm:text-[36px] md:text-[48px] lg:text-[66px] font-[500]  mb-10">
             Frequently Asked Questions
           </h2>
         </div>

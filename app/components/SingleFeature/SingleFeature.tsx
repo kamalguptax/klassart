@@ -13,7 +13,6 @@ interface SingleFeatureProps {
   img: string;
   title: TitleType;
   desc: string;
-  button: string;
 }
 
 export const SingleFeature: React.FC<SingleFeatureProps> = ({
@@ -21,7 +20,6 @@ export const SingleFeature: React.FC<SingleFeatureProps> = ({
   img,
   title,
   desc,
-  button,
 }) => {
   return (
     <div
@@ -52,19 +50,15 @@ export const SingleFeature: React.FC<SingleFeatureProps> = ({
         viewport={{ once: true }}
         className="w-full lg:w-1/2"
       >
-        <p className="font-openSans text-2xl sm:text-3xl md:text-4xl font-semibold pb-4">
-          <span className="bg-gradient-to-r from-[#C289FF] to-[#5555FF] bg-clip-text text-transparent">
+        <h4 className="font-openSans leading-[62px] text-[28px] sm:text-[32px] md:text-[42px] lg:text-[52px] font-medium text-[rgba(85,85,255,1)] pb-4">
+         <span className="text-gray-700">
             {title.first}
           </span>{" "}
           {title.second}
-        </p>
+        </h4>
         <p className="font-openSans text-sm sm:text-base text-[#8C8B99]">
           {desc}
         </p>
-
-        <button className="font-openSans mt-6 text-sm sm:text-base flex items-center gap-3 text-white bg-gradient-to-r from-[#3BAAFF] to-[#5556FF] px-6 py-3 rounded-full transition-all duration-300 hover:from-[#5556FF] hover:to-[#3BAAFF]">
-          {button} <ArrowUpRight size={16} strokeWidth={1.5} />
-        </button>
       </motion.div>
     </div>
   );
