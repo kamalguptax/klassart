@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function SubscriptionPage() {
   return (
-    <section className="bg-gray-50 py-12 px-4 md:px-10 text-gray-900 h-screen">
+    <section className="bg-gray-50 py-12 px-4 md:px-10 text-gray-900">
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold mb-2">Experience AI Without Limits</h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -11,7 +11,7 @@ export default function SubscriptionPage() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+      <div className="grid md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-6 max-w-7xl mx-auto">
         {/* Free Plan */}
         <div className="bg-white rounded-2xl shadow p-12 flex flex-col justify-between">
           <div>
@@ -43,7 +43,7 @@ export default function SubscriptionPage() {
         </div>
 
         {/* Pro Plan */}
-        <div className="bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl text-white p-12 shadow-xl scale-105 relative top-[-13px]">
+        <div className="bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl text-white p-12 shadow-xl 2xl-scale-105 relative top-[0px] 2xl:top-[-13px]">
           <div className="flex justify-between items-start">
             <div className="flex mb-4">
               <div className="pricing-icon mr-4">
