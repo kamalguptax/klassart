@@ -29,8 +29,8 @@ export const UltimateFeature = () => {
   ];
 
   return (
-    <section className="bg-[url('/assets/images/mobilebg.png')] bg-no-repeat bg-cover bg-center">
-      <div ref={ref} className="container px-4 py-16 sm:py-20 mx-auto">
+    <section className="pt-[60px] pb-[60px] sm:pt-[90px] sm:pb-[90px] md:pt-[120px] md:pb-[120px] bg-[url('/assets/images/mobilebg.png')] bg-no-repeat bg-cover bg-center">
+      <div ref={ref} className="container px-4 mx-auto">
         {/* Heading */}
         <div className="text-center mb-16 sm:mb-20">
           <motion.p

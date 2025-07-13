@@ -41,7 +41,7 @@ export default function ProductGrid() {
   return (
     <section
       ref={ref}
-      className="pt-30 pb-30 bg-[url('/assets/images/bg04.jpg')] bg-no-repeat bg-cover bg-bottom"
+      className="pt-[60px] pb-[60px] sm:pt-[90px] sm:pb-[90px] md:pt-[120px] md:pb-[120px] bg-[url('/assets/images/bg04.jpg')] bg-no-repeat bg-cover bg-bottom"
     >
       <div className="max-w-screen-xl mx-auto px-4">
         <motion.p

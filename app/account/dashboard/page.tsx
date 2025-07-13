@@ -25,7 +25,7 @@ export default function DashboardHeader() {
   return (
     <>
       {/* Header Section */}
-      <div className="min-h-[200px] p-8">
+      <div className="min-h-[200px] py-12">
         <h1 className="font-medium text-[#333333] text-[44px] mb-2">Dashboard</h1>
         <p className="text-[24px] font-semibold text-[rgba(123,74,231,1)] font-['Open_Sans'] mb-1">Welcome Back, Muneer Khan!</p>
         <p className="text-[14px] font-normal text-[#ADB8C9] font-['Open_Sans']">Here’s what happening with your business today</p>

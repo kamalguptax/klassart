@@ -60,7 +60,7 @@ export default function ImageGeneratorOption() {
 
 
   return (
-    <div className="h-screen text-black w-[420px] p-6 border-r border-gray-300 bg-white flex">
+    <div className="h-[calc(100vh-65px)] text-black w-[360px] 2xl:w-[420px] p-6 border-r border-gray-300 bg-white flex">
       <div className="w-full">
         <h2 className="text-xl font-normal mb-4">Generate an Image</h2>
 

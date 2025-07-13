@@ -9,7 +9,7 @@ export const Thumbnails = () => {
     threshold: 0.2, // 20% of the element must be visible before triggering
   });
   return (
-    <section className="pt-30 pb-30 bg-[url('/assets/images/scetion-bg03.jpg')] bg-no-repeat bg-cover bg-bottom">
+    <section className="pt-[60px] pb-[60px] sm:pt-[90px] sm:pb-[90px] md:pt-[120px] md:pb-[120px] bg-[url('/assets/images/scetion-bg03.jpg')] bg-no-repeat bg-cover bg-bottom">
       <div ref={ref} className="max-w-screen-xl mx-auto p-4">
         <div className=" text-center pb-4">
           <motion.p

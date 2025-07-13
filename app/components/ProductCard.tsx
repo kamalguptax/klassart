@@ -37,16 +37,18 @@ export default function ProductCard({ title, author, price, image }: CardProps) 
         <div className="p-4">
           <h2 className="text-sm text-gray-700 font-semibold">{title}</h2>
           <p className="text-xs text-gray-500 mt-1">By {author}</p>
-          <p className="text-green-600 font-bold mt-2">{price}</p>
-          <button className="mt-3 text-white bg-blue-600 px-4 py-2 rounded-lg text-sm hover:bg-blue-700">
+            <div className="flex justify-between items-center">
+                  <p className="text-green-600 font-bold mt-2">{price}</p>
+          <button className="mt-3 text-white px-6 py-3 rounded-full text-sm hover:bg-blue-700" style={{ background: "linear-gradient(90deg, #3BAAFF 0%, #5556FF 100%)" }}>
             View Details
           </button>
+            </div>
         </div>
       </div>
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
+        <div className="fixed inset-0 bg-black/70 flex justify-center items-center z-50">
           <div className="bg-white p-4 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-auto">
             <img src={modalImage} alt="Zoomed" className="w-full h-auto" />
             <button

@@ -22,11 +22,11 @@ export const SingleFeature: React.FC<SingleFeatureProps> = ({
   desc,
 }) => {
   return (
-    <div
-      className={`flex flex-col-reverse lg:flex-row ${
-        reverse ? "lg:flex-row-reverse" : "lg:flex-row"
-      } items-center gap-10 lg:gap-16 mb-16 lg:mb-24`}
-    >
+   <div
+  className={`flex flex-col-reverse lg:flex-row ${
+    reverse ? "lg:flex-row-reverse" : "lg:flex-row"
+  } items-center gap-6 sm:gap-10 md:gap-12 lg:gap-16 mb-10 sm:mb-14 md:mb-20 lg:mb-24`}
+>
       {/* Image */}
       <motion.div
         initial={{ opacity: 0, x: reverse ? 150 : -150 }}
@@ -50,7 +50,12 @@ export const SingleFeature: React.FC<SingleFeatureProps> = ({
         viewport={{ once: true }}
         className="w-full lg:w-1/2"
       >
-        <h4 className="font-openSans leading-[62px] text-[28px] sm:text-[32px] md:text-[42px] lg:text-[52px] font-medium text-[rgba(85,85,255,1)] pb-4">
+        <h4 className="font-openSans 
+  text-[28px] leading-[38px] 
+  sm:text-[32px] sm:leading-[44px] 
+  md:text-[42px] md:leading-[54px] 
+  lg:text-[52px] lg:leading-[62px] 
+  font-medium text-[rgba(85,85,255,1)] pb-4">
          <span className="text-gray-700">
             {title.first}
           </span>{" "}

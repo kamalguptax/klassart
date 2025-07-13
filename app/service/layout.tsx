@@ -7,9 +7,9 @@ export default function ServiceLayout({ children }: { children: React.ReactNode 
 
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex">
       <MenuSidebar />
-      <main className="flex-1 bg-white border-l border-gray-300">{children}</main>
+      <div className="flex-1 bg-white border-l border-gray-300">{children}</div>
     </div>
   );
 }

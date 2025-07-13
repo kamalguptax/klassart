@@ -43,7 +43,7 @@ const toggleFAQ = (index: number) => {
 };
 
   return (
-    <section className="px-6 p-4 py-20 bg-gradient-to-b from-blue-50 to-purple-100 py-16 px-6 ">
+    <section className="px-6 p-4 pt-[60px] pb-[60px] sm:pt-[90px] sm:pb-[90px] md:pt-[120px] md:pb-[120px] bg-gradient-to-b from-blue-50 to-purple-100 px-6  bg-gradient-to-b from-blue-50 to-purple-100 px-6 ">
       <div className="max-w-screen-xl mx-auto">
         <div className="flex flex-col">
           <p className="text-2xl font-[500] text-[#5555FF] font-inter">

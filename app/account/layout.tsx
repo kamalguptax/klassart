@@ -15,7 +15,7 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
   return (
     <div className="flex ">
       <Sidebar handleLogout={handleLogout} />
-      <main className="flex-1 bg-white px-20 border-l border-gray-300">{children}</main>
+      <main className="flex-1 bg-white px-8 2xl:px-20 border-l border-gray-300">{children}</main>
     </div>
   );
 }

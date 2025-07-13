@@ -12,7 +12,7 @@ import ProductGrid from "./components/ProductsPrinted/ProductsPrinted";
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="overflow-hidden">
       <HeroBanner />
       <UltimateFeature />
       <DetailedFeatures />

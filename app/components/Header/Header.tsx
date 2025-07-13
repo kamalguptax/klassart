@@ -34,7 +34,7 @@ export const Header = () => {
             <div className="flex justify-between items-center">
               {/* Brand */}
               <Link href="/" className="text-3xl font-bold" onClick={handleLinkClick}>
-                KLASS ART
+                <img src="/assets/images/logo.svg" alt="Logo" />
               </Link>
 
               {/* Desktop Nav */}

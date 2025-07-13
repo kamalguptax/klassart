@@ -1,124 +1,12 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import AvatarDropdown from './AvatarDropdown'; // Make sure this is correctly imported
 
-// Avatar Dropdown Component
-const AvatarDropdown: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const [showModal, setShowModal] = useState(false);
-
-  // Close dropdown when clicked outside
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const handleLogout = () => {
-    console.log("Logged out!");
-    setShowModal(false);
-    localStorage.removeItem("isLoggedIn");
-    window.location.href = "http://192.168.31.88:3000/";
-  };
-
-  return (
-    <div className="relative" ref={dropdownRef}>
-      <div
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-white font-bold cursor-pointer"
-      >
-        A
-      </div>
-
-      {isOpen && (
-        <div className="absolute right-0 mt-2 w-[260px] bg-white border border-gray-200 rounded-md shadow-lg z-50">
-          <ul>
-            <li>
-              <Link href="/account" className="flex items-center px-4 py-2 hover:bg-gray-100">
-                <img src="/assets/images/icon/profile.svg" alt="" className="mr-2" />
-                My Profile
-              </Link>
-            </li>
-            <li>
-              <Link href="/account/dashboard" className="flex items-center px-4 py-2 hover:bg-gray-100">
-                <img src="/assets/images/icon/dashboard.svg" alt="" className="mr-2" />
-                Dashboard
-              </Link>
-            </li>
-            <li>
-              <Link href="/account/my-plan" className="flex items-center px-4 py-2 hover:bg-gray-100">
-                <img src="/assets/images/icon/myplan.svg" alt="" className="mr-2" />
-                My Plan
-              </Link>
-            </li>
-            <li>
-              <Link href="/account/order-history" className="flex items-center px-4 py-2 hover:bg-gray-100">
-                <img src="/assets/images/icon/orderhistory.svg" alt="" className="mr-2" />
-                My Order History
-              </Link>
-            </li>
-            <li>
-              <Link href="/account/notifications" className="flex items-center px-4 py-2 hover:bg-gray-100">
-                <img src="/assets/images/icon/notification.svg" alt="" className="mr-2" />
-                Notification
-              </Link>
-            </li>
-            <li>
-              <Link href="/account/change-password" className="flex items-center px-4 py-2 hover:bg-gray-100">
-                <img src="/assets/images/icon/changepassword.svg" alt="" className="mr-2" />
-                Change Password
-              </Link>
-            </li>
-            <li
-              onClick={() => setShowModal(true)}
-              className="flex items-center text-red-500 px-4 py-2 hover:bg-gray-100 cursor-pointer"
-            >
-              <img src="/assets/images/icon/logout.svg" alt="" className="mr-2" />
-              Logout
-            </li>
-          </ul>
-
-          {showModal && (
-            <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-40">
-              <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-6 text-center">
-                <h2 className="text-lg font-semibold text-gray-800">Logout</h2>
-                <p className="mt-2 text-gray-600 text-sm">
-                  Are you sure you want to logout? Once you logout you need to login again. Are you OK?
-                </p>
-
-                <div className="mt-6 flex justify-center gap-4">
-                  <button
-                    onClick={() => setShowModal(false)}
-                    className="px-5 py-2 rounded-md border text-gray-500 bg-gray-100 hover:bg-gray-200"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    onClick={handleLogout}
-                    className="px-5 py-2 rounded-md bg-red-500 text-white font-semibold hover:bg-red-600"
-                  >
-                    Logout!
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      )}
-    </div>
-  );
-};
-
-// Header Component
 const Header: React.FC = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
@@ -132,16 +20,33 @@ const Header: React.FC = () => {
   }, []);
 
   return (
-    <header className="flex justify-between items-center px-20 py-4 bg-white border-b border-gray-300">
-      
-       <Link href="/" className="text-3xl font-bold">
-        <img src="/assets/images/logo.svg" alt="Logo" />
+    <header className="flex justify-between items-center px-8 py-4 bg-white border-b border-gray-300 relative z-50">
+      {/* Logo */}
+      <Link href="/" className="text-3xl font-bold">
+        <img src="/assets/images/logo.svg" alt="Logo" className="h-8 w-[160px]" />
       </Link>
-      <div className="flex items-center space-x-6">
-        {/* Navigation */}
+
+      {/* Hamburger for mobile */}
+      <div className="flex gap-5 lg:hidden">
+        <button
+        onClick={() => setMenuOpen(true)}
+        className="text-gray-700"
+        aria-label="Open Menu"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <AvatarDropdown />
+      </div>
+
+
+      {/* Desktop Menu */}
+      <div className="hidden lg:flex items-center space-x-6">
         <ul className="flex space-x-6 items-center">
           <li>
-            <Link href="/account/dashboard" className="text-gray-800 px-4 hover:text-indigo-600">
+            <Link href="/account/dashboard" className="text-gray-800 hover:text-indigo-600">
               Dashboard
             </Link>
           </li>
@@ -177,24 +82,24 @@ const Header: React.FC = () => {
             )}
           </li>
           <li>
-            <Link href="/products" className="text-gray-800 px-4 hover:text-indigo-600">
+            <Link href="/products" className="text-gray-800 hover:text-indigo-600">
               Marketplace
             </Link>
           </li>
           <li>
-            <Link href="/subscription" className="text-gray-800 px-4 hover:text-indigo-600">
+            <Link href="/subscription" className="text-gray-800 hover:text-indigo-600">
               Subscription
             </Link>
           </li>
           <li>
-            <Link href="/cart" className="flex items-center text-gray-800 px-4 hover:text-indigo-600">
+            <Link href="/cart" className="flex items-center text-gray-800 hover:text-indigo-600">
               <img src="/assets/images/icon/cart.svg" alt="Cart" className="w-5 h-5 mr-2" />
               Cart
             </Link>
           </li>
         </ul>
 
-        {/* Upgrade */}
+        {/* Upgrade Button */}
         <Link href="/account/my-plan">
           <div className="flex items-center cursor-pointer">
             <img src="/assets/images/icon/win.svg" alt="Upgrade" className="w-5 h-5 mr-2" />
@@ -204,6 +109,67 @@ const Header: React.FC = () => {
 
         {/* Avatar */}
         <AvatarDropdown />
+      </div>
+
+      {/* Mobile Menu - Slide from right */}
+      <div
+        className={`fixed top-0 right-0 h-full w-72 bg-white z-50 transform transition-transform duration-300 ease-in-out shadow-[0_0_20px_0_#ccc]
+          ${menuOpen ? 'translate-x-0' : 'translate-x-full'} lg:hidden`}
+      >
+        {/* Close Button */}
+        <button
+          onClick={() => setMenuOpen(false)}
+          className="absolute top-4 right-4 text-gray-600 hover:text-black"
+          aria-label="Close Menu"
+        >
+          ✕
+        </button>
+
+        <ul className="mt-12 space-y-4">
+          <li>
+            <Link href="/account/dashboard" className="block border-b border-gray-200 px-4 py-2 text-gray-800 hover:text-indigo-600">
+              Dashboard
+            </Link>
+          </li>
+          <li>
+            <Link href="/service/TextToImage" className="block border-b border-gray-200 px-4 py-2 text-gray-800 hover:text-indigo-600">
+              Text to Image
+            </Link>
+          </li>
+          <li>
+            <Link href="/service/ImageToImage" className="block border-b border-gray-200 px-4 py-2 text-gray-800 hover:text-indigo-600">
+              Image to Image
+            </Link>
+          </li>
+          <li>
+            <Link href="/service/TextBehindImage" className="block border-b border-gray-200 px-4 py-2 text-gray-800 hover:text-indigo-600">
+              Text Behind Image
+            </Link>
+          </li>
+          <li>
+            <Link href="/products" className="block border-b border-gray-200 px-4 py-2 text-gray-800 hover:text-indigo-600">
+              Marketplace
+            </Link>
+          </li>
+          <li>
+            <Link href="/subscription" className="block border-b border-gray-200 px-4 py-2 text-gray-800 hover:text-indigo-600">
+              Subscription
+            </Link>
+          </li>
+          <li>
+            <Link href="/cart" className="flex border-b border-gray-200 px-4 py-2 text-gray-800 hover:text-indigo-600">
+              <img src="/assets/images/icon/cart.svg" alt="Cart" className="w-5 h-5 mr-2" />Cart
+            </Link>
+          </li>
+          <li>
+            <Link href="/account/my-plan" className="flex px-4 py-2 text-gray-800 hover:text-indigo-600">
+              <div className="flex items-center cursor-pointer">
+                <img src="/assets/images/icon/win.svg" alt="Upgrade" className="w-5 h-5 mr-2" />
+                <span className="text-sm text-gray-800">Upgrade</span>
+              </div>
+            </Link>
+          </li>
+        </ul>
       </div>
     </header>
   );

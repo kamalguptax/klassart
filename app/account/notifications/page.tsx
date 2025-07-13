@@ -117,7 +117,7 @@ const groupedNotifications = notifications.reduce((acc, item) => {
 
 export default function NotificationPage() {
   return (
-    <div className="min-h-screen px-4 py-8 md:px-10">
+    <div className="min-h-screen py-12">
       <div className="flex justify-between items-center mb-6">
         <h1 className="ont-medium text-[#333333] text-[44px]">Notification</h1>
         <button className="flex items-center gap-1 px-6 py-4 border rounded-lg text-[14px] border-gray-200 text-gray-700 bg-gray-100 hover:bg-gray-100">

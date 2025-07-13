@@ -9,10 +9,10 @@ export const DetailedFeatures = () => {
     threshold: 0.2, // 20% of the element must be visible before triggering
   });
   return (
-    <section className="bg-[url('/assets/images/section-bg02.jpg')] bg-no-repeat bg-cover bg-center">
+    <section className="pt-[60px] pb-[60px] sm:pt-[90px] sm:pb-[90px] md:pt-[120px] md:pb-[120px] bg-[url('/assets/images/section-bg02.jpg')] bg-no-repeat bg-cover bg-center">
       <div
         ref={ref}
-        className="px-6 md:px-16 lg:px-36 py-20"
+        className="container mx-auto px-4 py-4"
       >
         <div className="">
           <motion.p

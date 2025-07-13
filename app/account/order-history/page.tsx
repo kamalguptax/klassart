@@ -28,7 +28,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen py-10 px-8">
+    <main className="min-h-screen py-10">
       <div className="">
         <h1 className="ont-medium text-[#333333] text-[44px] mb-2">My Order History</h1>
         <p className="text-sm text-gray-500 mb-6">March 2025</p>
