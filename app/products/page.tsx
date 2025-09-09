@@ -5,7 +5,10 @@ import Card from '../components/ProductCard';
 import type { CardProps } from "../components/ProductCard";
 
 // Exported products array
-export const products: CardProps[] = [
+export const products: (CardProps & {
+  description: string;
+  Category: string;
+})[] = [
   {
     id: "1",
     title: "Futuristic half-robot tiger in nature",
